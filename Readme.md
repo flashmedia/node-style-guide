@@ -4,10 +4,14 @@ This is a guide for writing consistent and aesthetically pleasing node.js code.
 It is inspired by what is popular within the community, and flavored with some
 personal opinions.
 
-This guide was created by [Felix Geisendörfer](http://felixge.de/) and is
-licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
-license. You are encouraged to fork this repository and make adjustments
-according to your preferences.
+This guide was created by [Felix Geisendörfer](http://felixge.de/), and has been
+subsequently forked by [Sandy Trinh][st] and [Scott Mebberson][sm].
+It has licensed under the [CC BY-SA 3.0][cc] license. You are encouraged to fork
+ this repository and make adjustments according to your preferences.
+
+[cc]: http://creativecommons.org/licenses/by-sa/3.0/
+[sm]: https://github.com/smebberson
+[st]: https://github.com/sandytrinh
 
 ![Creative Commons License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)
 
@@ -81,41 +85,6 @@ if (true)
 ```
 
 Also, notice the use of whitespace before and after the condition statement.
-
-## Declare one variable per var statement
-
-Declare one variable per var statement, it makes it easier to re-order the
-lines. Ignore [Crockford][crockfordconvention] on this, and put those
-declarations wherever they make sense.
-
-*Right:*
-
-```js
-var keys   = ['foo', 'bar'];
-var values = [23, 42];
-
-var object = {};
-while (items.length) {
-  var key = keys.pop();
-  object[key] = values.pop();
-}
-```
-
-*Wrong:*
-
-```js
-var keys = ['foo', 'bar'],
-    values = [23, 42],
-    object = {},
-    key;
-
-while (items.length) {
-  key = keys.pop();
-  object[key] = values.pop();
-}
-```
-
-[crockfordconvention]: http://javascript.crockford.com/code.html
 
 ## Use lowerCamelCase for variables, properties and function names
 
@@ -281,28 +250,6 @@ if (a.empty()) {
 }
 ```
 
-## Use descriptive conditions
-
-Any non-trivial conditions should be assigned to a descriptively named variable or function:
-
-*Right:*
-
-```js
-var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
-
-if (isValidPassword) {
-  console.log('winning');
-}
-```
-
-*Wrong:*
-
-```js
-if (password.length >= 4 && /^(?=.*\d).{4,}$/.test(password)) {
-  console.log('losing');
-}
-```
-
 ## Write small functions
 
 Keep your functions short. A good function fits on a slide that the people in
@@ -375,32 +322,6 @@ req.on('end', function onEnd() {
 req.on('end', function() {
   console.log('losing');
 });
-```
-
-## No nested closures
-
-Use closures, but don't nest them. Otherwise your code will become a mess.
-
-*Right:*
-
-```js
-setTimeout(function() {
-  client.connect(afterConnect);
-}, 1000);
-
-function afterConnect() {
-  console.log('winning');
-}
-```
-
-*Wrong:*
-
-```js
-setTimeout(function() {
-  client.connect(function() {
-    console.log('losing');
-  });
-}, 1000);
 ```
 
 ## Use slashes for comments
