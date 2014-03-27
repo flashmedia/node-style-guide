@@ -201,9 +201,15 @@ if (a == '') {
 
 ## Use multi-line ternary operator
 
-The ternary operator should not be used on a single line. Split it up into multiple lines instead.
+The ternary operator should only be used on a single line for very basic assignment. If the assignment itself involves anything of length, it should be split up into multiple lines.
 
 *Right:*
+
+```js
+var foo = (a === b) ? 1 : 2;
+```
+
+*Wrong:*
 
 ```js
 var foo = (a === b)
@@ -211,10 +217,16 @@ var foo = (a === b)
   : 2;
 ```
 
+```js
+var tags = tags
+  ? (this.tags ? this.tags.concat(this.tagFilter(tags)) : this.tagFilter(tags))
+  : this.tags;
+```
+
 *Wrong:*
 
 ```js
-var foo = (a === b) ? 1 : 2;
+var tags = tags ? (this.tags ? this.tags.concat(this.tagFilter(tags)) : this.tagFilter(tags)) : this.tags;
 ```
 
 ## Do not extend built-in prototypes
