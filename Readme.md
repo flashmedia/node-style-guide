@@ -387,3 +387,11 @@ Feel free to use getters that are free from [side effects][sideeffect], like
 providing a length property for a collection class.
 
 [sideeffect]: http://en.wikipedia.org/wiki/Side_effect_(computer_science)
+
+## Clarity is better than cleverness
+
+Keep things simple. Keep things easy to read (really important). Make sure your code is easily comprehendible. Write code such that the most important communication they do is not to the computer that executes them but to the human beings who will read and maintain the source code in the future (including yourself).
+
+This comes from the ['Basics of the Unix Philosophy handbook'][unixphilosophyruleofclarity].
+
+[unixphilosophyruleofclarity]: http://www.faqs.org/docs/artu/ch01s06.html#id2877610
