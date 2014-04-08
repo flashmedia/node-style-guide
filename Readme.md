@@ -41,12 +41,6 @@ cheap syntactic pleasures.
 [the opposition]: http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding
 [hnsemicolons]: http://news.ycombinator.com/item?id=1547647
 
-## 80 characters per line
-
-Limit your lines to 80 characters. Yes, screens have gotten much bigger over the
-last few years, but your brain has not. Use the additional room for split screen,
-your editor supports that, right?
-
 ## Use single quotes
 
 Use single quotes, unless you are writing JSON.
@@ -207,9 +201,15 @@ if (a == '') {
 
 ## Use multi-line ternary operator
 
-The ternary operator should not be used on a single line. Split it up into multiple lines instead.
+The ternary operator should only be used on a single line for very basic assignment. If the assignment itself involves anything of length, it should be split up into multiple lines.
 
 *Right:*
+
+```js
+var foo = (a === b) ? 1 : 2;
+```
+
+*Wrong:*
 
 ```js
 var foo = (a === b)
@@ -217,10 +217,16 @@ var foo = (a === b)
   : 2;
 ```
 
+```js
+var tags = tags
+  ? (this.tags ? this.tags.concat(this.tagFilter(tags)) : this.tagFilter(tags))
+  : this.tags;
+```
+
 *Wrong:*
 
 ```js
-var foo = (a === b) ? 1 : 2;
+var tags = tags ? (this.tags ? this.tags.concat(this.tagFilter(tags)) : this.tagFilter(tags)) : this.tags;
 ```
 
 ## Do not extend built-in prototypes
@@ -381,3 +387,11 @@ Feel free to use getters that are free from [side effects][sideeffect], like
 providing a length property for a collection class.
 
 [sideeffect]: http://en.wikipedia.org/wiki/Side_effect_(computer_science)
+
+## Clarity is better than cleverness
+
+Keep things simple. Keep things easy to read (really important). Make sure your code is easily comprehendible. Write code such that the most important communication they do is not to the computer that executes them but to the human beings who will read and maintain the source code in the future (including yourself).
+
+This comes from the ['Basics of the Unix Philosophy handbook'][unixphilosophyruleofclarity].
+
+[unixphilosophyruleofclarity]: http://www.faqs.org/docs/artu/ch01s06.html#id2877610
