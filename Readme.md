@@ -57,6 +57,30 @@ var foo = 'bar';
 var foo = "bar";
 ```
 
+## Always use braces
+
+To ensure all code remains readable without thinking, white space and braces are good.
+
+*Right:*
+
+```js
+if (mode === 'create') {
+  label = create.label;
+} else if (model === 'edit') {
+  label = edit.label;
+} else {
+  label = field.label;
+}
+```
+
+*Wrong:*
+
+```js
+if (mode === 'create') label = create.label
+else if (model === 'edit') label = edit.label
+else label = field.label
+```
+
 ## Opening braces go on the same line
 
 Your opening braces go on the same line as the statement.
