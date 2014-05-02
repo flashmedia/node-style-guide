@@ -217,6 +217,8 @@ var foo = (a === b)
   : 2;
 ```
 
+*Right:*
+
 ```js
 var tags = tags
   ? (this.tags ? this.tags.concat(this.tagFilter(tags)) : this.tagFilter(tags))
