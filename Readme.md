@@ -80,6 +80,26 @@ if (true)
 
 Also, notice the use of whitespace before and after the condition statement.
 
+## Spaces between brackets and braces
+
+You should always have spacing between your brackets, braces and functions, but not function names.
+
+*Right:*
+
+```js
+function fnName() {
+  console.log('fnName');
+}
+```
+
+*Wrong:*
+
+```js
+function fnName(){
+  console.log('fnName');
+}
+```
+
 ## Use lowerCamelCase for variables, properties and function names
 
 Variables, properties and function names should use `lowerCamelCase`.  They
